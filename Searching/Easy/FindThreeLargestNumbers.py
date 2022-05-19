@@ -1,9 +1,5 @@
 def findThreeLargestNumbers(array):
-    #Name: Find three largest numbers
-	#Category and difficulty: Recursion, Easy
-    #time: O(n)
-	#space: O(1)
-
+    # Write your code here.
 	ansList = []
 	firstMax = -99999999
 	secondMax = -99999999
@@ -34,12 +30,16 @@ def findThreeLargestNumbers(array):
 		ansList.append(secondMax)	
 	else:
 		ansList.insert(0, secondMax)
+		
+	lo = 0
+	hi = 1
+	
 	
 	#add third element to list in correct place
-	if(thirdMax <= secondMax and thirdMax <= firstMax):
+	if(thirdMax <= ansList[lo]):
 		ansList.insert(0, thirdMax)
-	elif((thirdMax <= secondMax and thirdMax >= firstMax) or (thirdMax >= secondMax and thirdMax <= firstMax)):
-		ansList.insert(0, thirdMax)
+	elif(thirdMax <= ansList[hi] and thirdMax >= ansList[lo]):
+		ansList.insert(1, thirdMax)
 	else:
 		ansList.append(thirdMax)
 	
