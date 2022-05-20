@@ -1,5 +1,9 @@
 def findThreeLargestNumbers(array):
-    # Write your code here.
+    #Name: Find three largest numbers
+	#Category and difficulty: Searching, Easy
+    #time: O(n) if array is unsorted, O(log n) if sorted
+	#space: O(1)
+
 	ansList = []
 	firstMax = -99999999
 	secondMax = -99999999
