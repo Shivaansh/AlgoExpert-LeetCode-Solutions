@@ -1,7 +1,7 @@
 def nodeDepths(root):
     #Name: Node Depths
 	#Category and difficulty: Binary Trees, Easy
-    #time: O(n) since we vist each array recursively
+    #time: O(n) since we vist each node recursively
 	#space: O(n) for the number of recursive calls made
     depth = 0
     sum = 0 + helper(root.left, depth+1) + helper(root.right, depth+1)
