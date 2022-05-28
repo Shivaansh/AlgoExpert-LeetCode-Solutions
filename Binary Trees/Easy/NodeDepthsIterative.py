@@ -14,5 +14,6 @@ def nodeDepths(root):
             sumOfDepths += currentNode["depth"]
             nodeStack.append({"node" : currentNode["node"].left, "depth" : currentNode["depth"]+1})
             nodeStack.append({"node" : currentNode["node"].right, "depth" : currentNode["depth"]+1})
+            
     return sumOfDepths
     pass
