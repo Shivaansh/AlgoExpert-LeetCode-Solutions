@@ -20,12 +20,11 @@ def isMonotonic(array):
         if(array[index] - array[index-1] < 0):
             isDecreasing = True
         
-    if(isDecreasing):
-        for i in range(len(array)-1):
+    for i in range(len(array)-1):
+        if(isDecreasing):
             if(array[i+1] - array[i] > 0):
                 return False
-    else:
-        for i in range(len(array)-1):
+        else:
             if(array[i+1] - array[i] < 0):
                 return False
     return True
