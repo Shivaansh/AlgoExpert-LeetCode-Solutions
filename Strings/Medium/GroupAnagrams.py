@@ -6,10 +6,14 @@ def groupAnagrams(words):
 
     #Create hastable and populate it with indices of each anagram
     hashTable = {}
-    for index in range(0, len(words)):
+
+    #Go through m words - O(m)
+    for index in range(len(words)):
         word = words[index]
+        #sort word of length n in O(n log n) time
         sorted_word = sorted(word)
         sorted_word = ''.join(sorted_word)
+        #Lookup / add to hash table in constant time
         if(sorted_word in hashTable):
             hashTable[sorted_word].append(index)
         else:
@@ -19,6 +23,7 @@ def groupAnagrams(words):
     returnArray = []
 
     #for each anagram, create a group of words using the indices and the original input array and add to returnArray
+    #Max m keys - O(m)
     for key in hashTable:
         group = []
         indices = hashTable[key]
