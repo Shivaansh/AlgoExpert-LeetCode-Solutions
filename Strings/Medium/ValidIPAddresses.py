@@ -1,10 +1,6 @@
 def validIPAddresses(string):
     # Write your code here.
     validIPs = []
-    stringAsArray = []
-    
-    for char in string:
-        stringAsArray.append(char)
         
     #first dot position
     for firstDot in range(1, min(len(string), 4)):
