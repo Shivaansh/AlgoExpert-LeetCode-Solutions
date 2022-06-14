@@ -22,5 +22,3 @@ def isPartValid(string):
     if(len(string) > 3 or len(string) == 0 or int(string) < 0 or int(string) > 255):
         return False
     return True
-        
-    return []
