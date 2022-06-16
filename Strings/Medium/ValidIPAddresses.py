@@ -1,10 +1,6 @@
 def validIPAddresses(string):
     # Write your code here.
     validIPs = []
-    stringAsArray = []
-    
-    for char in string:
-        stringAsArray.append(char)
         
     #first dot position
     for firstDot in range(1, min(len(string), 4)):
@@ -26,5 +22,3 @@ def isPartValid(string):
     if(len(string) > 3 or len(string) == 0 or int(string) < 0 or int(string) > 255):
         return False
     return True
-        
-    return []
