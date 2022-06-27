@@ -28,10 +28,7 @@ def hasSingleCycle(array):
             array[index] = mark
 
         #Increase index 
-        if(sum < 0 or sum >= length):
-            index = sum % length
-        else:
-            index = sum
+        index = sum % length
 
         #Check if cycling in array
         if(count > length+1 or array[index] == mark):

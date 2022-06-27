@@ -1,8 +1,8 @@
 def riverSizes(matrix):
     #Name: River Sizes
 	#Category and difficulty: Graphs, Medium
-    #time: O(rc), where r and c are the number of rows and columsn in the matrix
-	#space: O(rc), where r and c are the number of rows and columsn in the matrix
+    #time: O(rc), where r and c are the number of rows and columns in the matrix
+	#space: O(rc), where r and c are the number of rows and columns in the matrix
     rows = len(matrix)
     cols = len(matrix[0])
     sizes = []
