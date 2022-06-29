@@ -10,7 +10,7 @@ def binaryTreeDiameter(tree):
     #Name: Binary Tree Diameter
     #Category and difficulty: Binary Trees, Medium
     #time: O(n) since we vist each node
-    #space: O(n) since we have a recursive call for each node
+    #space: O(h) since we have a recursive call for each level of the tree
     if(tree is not None):
         #Get max depth of left subtree
         if(tree.left is not None):
