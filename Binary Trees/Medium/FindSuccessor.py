@@ -12,9 +12,8 @@ def findSuccessor(tree, node):
     #Category and difficulty: Binary Trees, Medium
     #time: O(n) since we vist each node
     #space: O(n) since we store the traversal of the whole tree
-    ##Note: Here we find the in-order traversal of the tree iteratively, to prevent multiple recrusive calls
-    traversal = []
-    inOrderTraversal(tree, traversal)
+    ##Note: Here we find the in-order traversal of the tree iteratively, to prevent multiple recrusive
+    traversal = inOrderTraversal(tree)
 
     for index in range(len(traversal)):
         if(traversal[index] == node):
@@ -22,11 +21,19 @@ def findSuccessor(tree, node):
                 return traversal[index+1]
     return None
 
-def inOrderTraversal(tree, array):
+def inOrderTraversal(tree):
+    array = []
+    stack = []
     if(tree is not None):
-        if(tree.left is not None):
-            inOrderTraversal(tree.left, array)
-        array.append(tree)
-        if(tree.right is not None):
-            inOrderTraversal(tree.right, array)
+        currentPointer = tree
+        while(currentPointer is not None or len(stack) > 0):
+            
+            if(currentPointer is not None):
+                stack.append(currentPointer)
+                currentPointer = currentPointer.left
+            else:
+                currentPointer = stack.pop()
+                array.append(currentPointer)
+                currentPointer = currentPointer.right
+    return array
     
