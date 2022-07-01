@@ -58,7 +58,6 @@ class BST:
                 current = current.right
             else:
             #When current node has value to be removed
-                
                 #If target node has 2 children, doesn't matter if root or not
                 if(current.left is not None and current.right is not None):
                     #Replace value of current with value of InOrder successor
