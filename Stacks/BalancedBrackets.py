@@ -11,7 +11,7 @@ def balancedBrackets(string):
             stack.append(char)
         elif (char == ']'):
             if(len(stack) == 0):
-                return false
+                return False
             else:
                 if(stack[-1] != '['):
                     return False
@@ -19,7 +19,7 @@ def balancedBrackets(string):
                     stack.pop()
         elif (char == '}'):
             if(len(stack) == 0):
-                return false
+                return False
             else:
                 if(stack[-1] != '{'):
                     return False
