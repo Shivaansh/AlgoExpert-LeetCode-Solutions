@@ -99,8 +99,6 @@ public:
                 ansString[indices[index]] = characters[index];
             }
         }
-        
         return ansString;
-        
     }
 };
