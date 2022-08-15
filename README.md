@@ -1,12 +1,12 @@
-## AlgoExpert Question Solutions
+## AlgoExpert LeetCode Solutions
 
-Here I am storing all the solutions I come up with to problems I solve on AlgoExpert.
+Here I am storing all the solutions I come up with to problems I solve on AlgoExpert.io and Leetcode.com.
 
-All these solutions have passed the test cases on AlgoExpert, and I have noted down the time and space complexities as well.
+All these solutions have passed the test cases on AlgoExpert / LeetCode, and I have noted down the time and space complexities as well.
 
-I'm using Python3 to solve these problems as it avoids a lot of boilerplate code, and also has many data structures and functionalities like sorting, array max etc built in.
-
-I have also started adding C++ solutions to certain problems, purely for the sake of practice.
+I'm using Python3 and C++ to solve these problems.
+Python3 as it avoids a lot of boilerplate code, and also has many data structures and functionalities like sorting, array max etc built in.
+C++ because it's useful for the gaming industry, and also helps provide a better understanding of memory use. 
 
 #TO DO
 
