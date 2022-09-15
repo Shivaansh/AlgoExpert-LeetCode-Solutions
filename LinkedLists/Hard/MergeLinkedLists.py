@@ -8,7 +8,7 @@ class LinkedList:
 def mergeLinkedLists(headOne, headTwo):
     #Name: Merge Linked Lists
     #Category and difficulty: Linked Lists, Hard
-    #time: O(n + m) for lenghts of the two linked lists
+    #time: O(n + m) for lengths of the two linked lists
     #space: O(1) for in-place merge
 
     #Decide which linked list is the head
