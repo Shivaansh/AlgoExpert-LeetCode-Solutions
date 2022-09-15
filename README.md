@@ -10,5 +10,5 @@ C++ because it's useful for the gaming industry, and also helps provide a better
 
 #TO DO
 
-I will be working on creating a tabular summary of the all the problems solved, as well as adding more structure to the LeetCode solutions added
-
+1. I will be working on creating a tabular summary of the all the problems solved, as well as adding more structure to the LeetCode solutions added
+2. I will be creating summaries / notes on how each of the problems were solved.
