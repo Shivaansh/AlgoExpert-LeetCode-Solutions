@@ -1,72 +1,62 @@
 # Import time module
 import time
 ####################### START CODE TO CHECK RUNTIME FOR ##################################    
-def longestSubstringWithoutDuplication1(string):
-    # Write your code here.
-    charset = set()
+def underscorifySubstring(string, substring):
+    #Name: Underscorify Substring
+	#Category and difficulty: Strings, Hard
+    #time: TBD
+	#space: Max O(n) where n is the length of string
 
-    maxSubstringLength = float('-inf')
-    maxSubstring = ""
-    start = 0
-    current = start
-    currentLength = 0
+    #Edge case
+    if(substring == ""):
+        return "_" + string + "_"
+        
+    ssLength = len(substring)
+    current = 0
 
     while(current < len(string)):
-        if(string[current] not in charset):
-            charset.add(string[current])
-            currentLength += 1
-            current += 1
+        #CASE - substring found
+        if(string[current:current+ssLength] == substring):
+            start = current
+            end = findend(string, substring, start)
+            string = string[:start] + "_" + string[start:end] + "_" + string[end:]
+            current = end+1
+        #CASE - substring not found
         else:
-            if(currentLength > maxSubstringLength):
-                maxSubstringLength = currentLength
-                maxSubstring = string[start:current]
-            currentLength = 0
-            start += 1
-            current = start
-            charset = set()
-
-    if(currentLength > maxSubstringLength):
-        maxSubstring = string[start:current]
-        
-    return maxSubstring
-
-def longestSubstringWithoutDuplication2(string):
-    # Write your code here.
-    charTable = {}
-
-    maxSubstringLength = float('-inf')
-    maxSubstring = ""
-    start = 0
-    current = start
-    currentLength = 0
-
-    while(current < len(string)):
-        if(string[current] not in charTable):
-            charTable[string[current]] = current
-            currentLength += 1
             current += 1
-        else:
-            if(currentLength > maxSubstringLength):
-                maxSubstringLength = currentLength
-                maxSubstring = string[start:current]
-            start = charTable[string[current]]+1
-            currentLength = current-start
-            charTable.clear()
-            for i in range(start, current):
-                if(string[i] not in charTable):
-                    charTable[string[i]] = i
+            
+    return string
 
-    if(currentLength > maxSubstringLength):
-        maxSubstring = string[start:current]
+def findend(string, substring, startPoint):
+    ssLength = len(substring)
+    endPoint = startPoint + ssLength
+
+    #This is also an edge case
+    if(ssLength == 1):
+        current = startPoint+1
+        while(current < len(string) and string[current] == substring[0]):
+            current += 1
+        return current
         
-    return maxSubstring
+    anchor = startPoint+1
+    current = anchor
+    while(endPoint < len(string) and current <= endPoint):
+        if(string[current : current + ssLength] == substring):
+            endPoint = current + ssLength
+        current += 1
+    return endPoint
+
 
 ####################### END CODE TO CHECK RUNTIME FOR ##################################    
 # record start time
 start = time.time()
- 
+
+substring1 = "a"
+substring2 = "ab"
+substring3 = "abc"
+mainstring = "abababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaaabababababababababababababaababaaabbababaa"
 # Copy code to check runtime for
-print(longestSubstringWithoutDuplication1("abacacacaaabacaaaeaaafa"))
+print(underscorifySubstring(mainstring, substring1))
 # Mark end time of code
 end = time.time()
  
@@ -78,11 +68,23 @@ print("The time of execution of above program 1 is :",
 start = time.time()
  
 # Copy code to check runtime for
-print(longestSubstringWithoutDuplication2("abacacacaaabacaaaeaaafa"))
+print(underscorifySubstring(mainstring, substring2))
 # Mark end time of code
 end = time.time()
  
 # print the difference between start
 # and end time in milli. secs
 print("The time of execution of above program 2 is :",
+      (end-start) * 10**3, "ms")
+
+start = time.time()
+ 
+# Copy code to check runtime for
+print(underscorifySubstring(mainstring, substring3))
+# Mark end time of code
+end = time.time()
+ 
+# print the difference between start
+# and end time in milli. secs
+print("The time of execution of above program 3 is :",
       (end-start) * 10**3, "ms")
