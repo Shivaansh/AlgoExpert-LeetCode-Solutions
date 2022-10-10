@@ -19,7 +19,6 @@ def getLowestCommonManager(topManager, reportOne, reportTwo):
     return currentCommonManagerName
 
 def getPathToReport(report, topManager, path, allPaths):
-    print("running for " + topManager.name)
     newPath = path + [topManager] 
     if(report == topManager):
         allPaths.append(newPath)
