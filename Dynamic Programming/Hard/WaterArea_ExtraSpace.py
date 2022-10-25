@@ -21,11 +21,9 @@ def waterArea(heights):
     max = heights[len(heights)-1]
     for index in reversed(range(1, len(heights)-1)):
         currentHeight = heights[index]
-        if(max >= currentHeight):
-            waterAtPillar[index] = min(waterAtPillar[index], max - currentHeight)
-        else:
+        if(max < currentHeight):
             max = currentHeight
-            waterAtPillar[index] = min(waterAtPillar[index], max - currentHeight)
+        waterAtPillar[index] = min(waterAtPillar[index], max - currentHeight)
 
     return(sum(waterAtPillar))
 
