@@ -59,4 +59,3 @@ def postOrderTraverse(tree, array):
             array.append(temp.value)
             temp = None
     return array
-
