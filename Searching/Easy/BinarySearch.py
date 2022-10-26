@@ -1,6 +1,6 @@
 def binarySearch(array, target):
     #Name: Binary Search
-	#Category and difficulty: Recursion, Easy
+	#Category and difficulty: Searching, Easy
     #time: O(n log n) if array is unsorted, O(log n) if sorted
 	#space: O(1)
 
